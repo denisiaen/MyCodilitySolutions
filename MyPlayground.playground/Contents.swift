@@ -2,6 +2,24 @@ import UIKit
 
 var greeting = "Welcome! Here are my solutions for Codility training."
 
+func frogRiverOne(_ X : Int, _ A : [Int]) -> Int {
+    var pos = [Int:Bool]()
+    
+    for (index, item) in A.enumerated() {
+        if item <= X {
+            pos[item] = true
+        }
+        
+        if pos.count == X {
+            return index
+        }
+    }
+    
+    return -1
+}
+
+frogRiverOne(5, [1, 3, 1, 4, 4, 3, 5, 2])
+
 func tapeEquilibrium(_ A : [Int]) -> Int {
     var i = 1
     var leftSum = A[i-1]
