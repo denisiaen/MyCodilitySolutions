@@ -2,6 +2,25 @@ import UIKit
 
 var greeting = "Welcome! Here are my solutions for Codility training."
 
+func tapeEquilibrium(_ A : [Int]) -> Int {
+    var i = 1
+    var leftSum = A[i-1]
+    var rightSum = Array(A[i..<A.count]).reduce(0, +)
+    var minValue = abs(leftSum - rightSum)
+    
+    while i + 1 < A.count {
+        leftSum = leftSum + A[i]
+        rightSum = rightSum - A[i]
+        let absDiff = abs(leftSum - rightSum)
+        minValue = min(minValue, absDiff)
+        i += 1
+    }
+    
+    return minValue
+}
+
+tapeEquilibrium([3, 4, 5])
+
 func frogImpl(_ X : Int, _ Y : Int, _ D : Int) -> Int {
     let N: Double = Double(Y - X) / Double(D)
     let Nint = Int(N.rounded(.up))
