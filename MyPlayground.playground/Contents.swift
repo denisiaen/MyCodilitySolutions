@@ -2,6 +2,23 @@ import UIKit
 
 var greeting = "Welcome! Here are my solutions for Codility training."
 
+func permCheck(_ A : [Int]) -> Int {
+    var valuesDict = [Int: Bool]()
+    
+    for element in A {
+        if valuesDict[element] != nil || element > A.count {
+            return 0
+        } else {
+            valuesDict[element] = true
+        }
+    }
+    
+    return valuesDict.count == A.count ? 1 : 0
+}
+
+permCheck([4, 1, 3, 2])
+permCheck([4,1, 3])
+
 func frogRiverOne(_ X : Int, _ A : [Int]) -> Int {
     var pos = [Int:Bool]()
     
