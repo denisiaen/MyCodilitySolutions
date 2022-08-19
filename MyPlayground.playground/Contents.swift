@@ -2,6 +2,27 @@ import UIKit
 
 var greeting = "Welcome! Here are my solutions for Codility training."
 
+func maxCounters(_ N : Int, _ A : [Int]) -> [Int] {
+    var counters = [Int](repeating: 0, count: N)
+    var maxValue = 0
+    var currentMaxCounter = 0
+
+    for el in A {
+        if (el >= 1) && (el <= N) {
+            let value = counters[el - 1] + 1
+            counters[el - 1] = value
+            maxValue = max(maxValue, value)
+        } else if maxValue > currentMaxCounter {
+            currentMaxCounter = maxValue
+            counters = [Int](repeating: currentMaxCounter, count: N)
+        }
+    }
+    
+    return counters
+}
+
+maxCounters(5, [3, 4, 4, 6, 1, 4, 4])
+
 func permCheck(_ A : [Int]) -> Int {
     var valuesDict = [Int: Bool]()
     
